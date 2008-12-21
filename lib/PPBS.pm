@@ -2,6 +2,7 @@ use strict;
 use warnings;
 
 #{{{ POD
+
 =pod
 
 =head1 NAME
@@ -72,17 +73,25 @@ names of tasks that need to run first. The code argument can be a string, or a
 perl sub. If the code is a sub it will be run when the task is run. If the code
 is a string it will be passed to the shell using system().
 
+The ppbuild script automatically adds PPBS to the library search path. If you
+wish to write build system specific support files you can place them in a PPBS
+directory and not need to manually call perl -I PPBS, or add use lib 'PPBS'
+yourself in your .ppb file. As well if you will be sharing the codebase with
+others, and do not want to add PPBS as a requirement you can copy PPBS.pm into
+the PPBS directory in the project.
+
 =head1 FUNCTIONS
 
 =over 4
 
 =cut
+
 #}}}
 
 package PPBS;
 use vars qw($VERSION);
 
-$VERSION = '1.00';
+$VERSION = '1.01';
 
 use Exporter 'import';
 our @EXPORT = qw/ Task File Group Describe /;
@@ -274,3 +283,4 @@ You should have received a copy of the GNU General Public License
 along with this.  If not, see <http://www.gnu.org/licenses/>.
 
 =cut
+

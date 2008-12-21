@@ -1,7 +1,11 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+
+# If there is a PPBS dir present then add it to @INC so the .ppb file can
+# access its support files.
 use lib "PPBS";
+
 use PPBS qw/ RunTask TaskList Describe /;
 
 use vars qw/ $tasks $file /;
